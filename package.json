@@ -1,0 +1,23 @@
+{
+  "name": "dsa",
+  "version": "1.0.0",
+  "description": "DSA Notes",
+  "main": "big-o.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node big-o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niranjan-A-S/data-structures-and-algorithms.git"
+  },
+  "author": "Niranjan A S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niranjan-A-S/data-structures-and-algorithms/issues"
+  },
+  "homepage": "https://github.com/Niranjan-A-S/data-structures-and-algorithms#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
