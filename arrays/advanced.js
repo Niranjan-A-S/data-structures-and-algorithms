@@ -27,29 +27,47 @@ obj1.value = 15;
 //!Instantiation
 //Making the copy of the object and reuse it. This is done using class
 
-class Player {
-    constructor(name, type) {
-        this.name = name;
-        this.type = type;
-        console.log(this);
-    }
-    introduce() {
-        console.log(`Hi I am ${this.name}, I'm a ${this.type}`)
-    }
+// class Player {
+//     constructor(name, type) {
+//         this.name = name;
+//         this.type = type;
+//         console.log(this);
+//     }
+//     introduce() {
+//         console.log(`Hi I am ${this.name}, I'm a ${this.type}`)
+//     }
+// }
+
+// const player1 = new Player('Dobby', 'elf');
+
+// class Wizard extends Player {
+//     constructor(name, type) {
+//         super(name, type)
+//         console.log(this);
+//     }
+//     play() {
+//         console.log(`WEEEE I'm a ${this.type}`)
+//     }
+// }
+
+// const wizard = new Wizard('Shelly', 'Healer');
+// wizard.play();
+// wizard.introduce();
+
+//Classical inheritance
+const Player = function (name, type) {
+    this.type = type;
+    this.name = name;
 }
 
-const player1 = new Player('Dobby', 'elf');
-
-class Wizard extends Player {
-    constructor(name, type) {
-        super(name, type)
-        console.log(this);
-    }
-    play() {
-        console.log(`WEEEE I'm a ${this.type}`)
-    }
+Player.prototype.introduce = function () {
+    console.log(`Hi I am ${this.name}, I'm a ${this.type}`);
 }
 
-const wizard = new Wizard('Shelly', 'Healer');
-wizard.play();
-wizard.introduce();
+const wizard1 = new Player('Shelly', 'Healer');
+const wizard2 = new Player('Shawn', 'Dark Magic');
+
+wizard1.play = function () {
+    console.log(`WEEEE I'm a ${this.type}`)
+}
+
