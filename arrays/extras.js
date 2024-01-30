@@ -49,8 +49,8 @@ const moveZeroes = (nums) => {
         }
     }
 };
-const nums = [0, 0, 1]
-moveZeroes(nums);
+// const array = [0, 0, 1]
+// moveZeroes(array);
 
 
 /**
@@ -77,3 +77,80 @@ function containsDuplicate(nums) {
     }
     return false
 };
+
+
+/**
+ Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+Example 1:
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+Example 2:
+Input: nums = [-1,-100,3,99], k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+
+Constraints:
+1 <= nums.length <= 105j
+-231 <= nums[i] <= 231 - 1
+0 <= k <= 105
+ */
+
+const rotateOnce = (arr) => {
+    //check for array validity
+    if (!Array.isArray(arr)) throw new Error('Not a valid array');
+
+    //validate against array length
+    const arrLength = arr.length;
+    if (arrLength <= 1) return arr;
+
+    const lastItem = arr.pop();
+    arr.unshift(lastItem);
+}
+
+const rotateArray = (arr, k) => {
+    while (k !== 0) {
+        rotateOnce(arr);
+        k--;
+    }
+}
+//Big O => O(k*n) 
+
+const k = 3;
+// rotateArray(array, k)
+
+//better approach
+function reverse(nums, start, end) {
+    while (start < end) {
+        [nums[start], nums[end]] = [nums[end], nums[start]];
+        start++;
+        end--;
+    }
+}
+
+function rotate(nums, k) {
+    const length = nums.length;
+    const lastIndex = length - 1;
+    k = k % length; //Handle the case where k is greater than the array length
+
+    //reverse the entire array
+    reverse(nums, 0, lastIndex);
+
+    //Reverse the first k elements
+    reverse(nums, 0, k - 1);
+
+    //Reverse the remaining elements
+    reverse(nums, k, lastIndex)
+}
+
+// Example usage:
+const array = [1, 2, 3, 4, 5, 6, 7];
+rotate(array, k);
+
