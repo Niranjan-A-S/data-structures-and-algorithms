@@ -101,6 +101,7 @@ class LinkedList {
 
         leader.next = newNode;
         newNode.next = holdingPointer;
+
         this.length++;
         return this;
 
@@ -109,10 +110,12 @@ class LinkedList {
     traverseToIndex(index) {
         let counter = 0;
         let currentNode = this.head;
+
         while (index !== counter) {
             currentNode = currentNode.next;
             counter++;
         }
+
         return currentNode;
     }
 
