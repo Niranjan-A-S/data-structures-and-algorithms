@@ -150,6 +150,15 @@ class LinkedList {
         return this;
     }
 
+    get(index) {
+        //check for params
+        if (index >= this.length) {
+            index = this.length - 1;
+        }
+        const node = this.traverseToIndex(index);
+        return node.value
+    }
+
     printList() {
         let current = this.head;
         const array = [];
@@ -172,4 +181,4 @@ linkedList
     .remove(4)
     .printList()
 
-console.log(linkedList);
+console.log(linkedList.get(0));
