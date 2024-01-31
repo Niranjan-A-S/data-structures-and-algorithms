@@ -90,11 +90,6 @@ class LinkedList {
             return this;
         }
 
-        if (index === 0) {
-            this.prepend(value);
-            return this;
-        }
-
         const newNode = new Node(value);
         const leader = this.traverseToIndex(index - 1);
         const holdingPointer = leader.next
@@ -104,7 +99,6 @@ class LinkedList {
 
         this.length++;
         return this;
-
     }
 
     traverseToIndex(index) {
@@ -119,6 +113,43 @@ class LinkedList {
         return currentNode;
     }
 
+    remove(index) {
+        // Check for an empty list
+        if (this.length === 0) {
+            console.error("Cannot remove from an empty list.");
+            return;
+        }
+
+        // Check for a valid index
+        if (index < 0) {
+            console.error("Invalid index.");
+            return;
+        }
+
+        if (index === 0) {
+            if (this.length === 1) {
+                this.head = null;
+                this.tail = null;
+            } else {
+                this.head = this.head.next;
+            }
+        }
+
+        else if (index >= this.length - 1) {
+            const leader = this.traverseToIndex(this.length - 2);
+            leader.next = null;
+            this.tail = leader;
+        }
+        else {
+            const leader = this.traverseToIndex(index - 1);
+            const nodeToBeRemoved = leader.next
+            leader.next = nodeToBeRemoved.next;
+        }
+
+        this.length--;
+        return this;
+    }
+
     printList() {
         let current = this.head;
         const array = [];
@@ -127,10 +158,6 @@ class LinkedList {
             current = current.next;
         }
         console.log(array);
-    }
-
-    remove(index) {
-
     }
 
 }
@@ -142,6 +169,7 @@ linkedList
     .prepend(0)
     .insert(2, 3)
     ._insert(2, 2)
+    .remove(4)
     .printList()
 
-// console.log(linkedList);
+console.log(linkedList);
