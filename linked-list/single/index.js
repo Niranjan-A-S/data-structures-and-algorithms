@@ -111,7 +111,7 @@ class LinkedList {
         }
 
         return currentNode;
-    }
+    }   
 
     remove(index) {
         // Check for an empty list
