@@ -168,6 +168,25 @@ class LinkedList {
         }
         console.log(array);
     }
+    //!Important
+    reverse() {
+        if (!this.head.next) {
+            return this
+        }
+        let curr = this.head;
+        let prev = null;
+        this.tail = this.head;
+        while (curr) {
+            const next = curr.next;
+            curr.next = prev;// here the pointer is reversed
+            prev = curr;
+            curr = next;
+        }
+        this.head.next = null;
+        this.head = prev;
+        return this;
+    }
+
 
 }
 
@@ -178,7 +197,14 @@ linkedList
     .prepend(0)
     .insert(2, 3)
     ._insert(2, 2)
-    .remove(4)
+    // .remove(4)
+    .reverse()
     .printList()
 
-console.log(linkedList.get(0));
+console.log(linkedList);
+
+//Practical Application
+/**
+ * File System
+ * Browser History
+ */

@@ -103,7 +103,8 @@ const dLinkedList = new DoublyLinkedList(1);
 
 dLinkedList
     .append(4)
-    // .append(3)
-    // .prepend(2, 2)
+    .append(3)
+    .prepend(2, 2)
     .insert(1, 2)
-console.log(dLinkedList);
+
+// console.log(dLinkedList);
