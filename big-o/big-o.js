@@ -24,7 +24,6 @@ function findNemo(array) {
 // In simple terms it is the scale of no of operations increasing with the number of inputs
 
 // !The BIg O of the above function is O(n) or Linear Complexity
-
 //! Another Big O Notation is Constant time ie O(1) ie does not depend upon the number of  inputs
 // for eg: 
 function logSingleBox(boxes) {

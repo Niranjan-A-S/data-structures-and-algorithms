@@ -32,8 +32,8 @@ class BinarySearchTree {
     }
 
     insert(value) {
-        const newNode = new Node(value);
-        if (this.root === null) {
+        const newNode = new Node(value)
+        if (!this.root) {
             this.root = newNode;
         } else {
             let currentNode = this.root;
@@ -51,10 +51,56 @@ class BinarySearchTree {
                     }
                     currentNode = currentNode.right;
                 }
-
             }
         }
         return this;
+    }
+
+    lookup(value) {
+        if (!this.root) return false;
+        let currentNode = this.root;
+
+        while (currentNode) {
+            if (value === currentNode.value) return currentNode;
+
+            currentNode = value < currentNode.value ? currentNode.left : currentNode.right
+        }
+
+        return false;
+    }
+
+    remove(value) {
+        if (!this.root) return false;
+
+        let currentNode = this.root;
+        let parentNode = null;
+        while (currentNode) {
+            if (value < currentNode.value) {
+                parentNode = currentNode;
+                currentNode = currentNode.left;
+            }
+            else if (value > currentNode.value) {
+                parentNode = currentNode;
+                currentNode = currentNode.right;
+            }
+            else if (currentNode.value === value) {
+                if (!currentNode.right) {
+                    if (!parentNode) {
+                        parentNode.left = currentNode.left
+                    } else {
+                        if (currentNode.value < parentNode.value) {
+                            parentNode.left = currentNode.left;
+                        }
+                        else if (currentNode.value > parentNode.value) {
+                            parentNode.right = currentNode.left;
+                        }
+                    }
+
+                } else if (!currentNode.right) {
+
+                }
+            };
+        }
     }
 }
 
@@ -70,9 +116,9 @@ bst
     .insert(20)
     .insert(170)
     .insert(15)
-    .insert(6)
+// .insert(6) 
 
-console.log(JSON.stringify(bst.root));
+console.log(bst.lookup(6));
 
 function traverse(node) {
     const tree = { value: node.value };
