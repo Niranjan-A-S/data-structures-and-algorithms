@@ -127,6 +127,15 @@ function reverseString(str) {
 
 const reverseString2 = (str) => str.split('').reverse().join('')
 
+//another approach to reverse the string
+function reverseString3(str) {
+    let result = '';
+    for (let i = 0; i < str.length; i++) {
+        result += str[str.length - (i + 1)]
+    }
+    console.log(result);
+}
+
 const string = "Hello I am Here"
 reverseString2(string);
 
