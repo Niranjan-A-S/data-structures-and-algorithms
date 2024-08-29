@@ -68,6 +68,33 @@ class _Array {
 
         return this.data;
     }
+
+    //this also works
+    _unshift(value) {
+        let temp = this.data[0];
+        for (let i = 0; i <= this.length; i++) {
+            this.data[i] = value;
+            value = temp;
+            temp = this.data[i + 1];
+        }
+        return ++this.length;
+    }
+
+    //standard approach
+    unshift(value) {
+        for (let i = this.length; i > 0; i--) {
+            this.data[i] = this.data[i - 1];
+        }
+        this.data[0] = value;
+        return ++this.length;
+    }
+
+    shift() {
+        const firstItem = this.data[0];
+        this.shiftPosition(0);
+        this.length--;
+        return firstItem;
+    }
 }
 
 
